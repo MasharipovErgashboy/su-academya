@@ -20,6 +20,7 @@ DEBUG = os.getenv("DEBUG", "True") == "True"
 DEFAULT_ALLOWED_HOSTS = [
     "suacademya.uz",
     "www.suacademya.uz",
+    "admin.suacademya.uz",
     "localhost",
     "127.0.0.1",
 ]
@@ -302,15 +303,19 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "https://suacademya.uz",
     "https://www.suacademya.uz",
+    "https://admin.suacademya.uz",
     "http://suacademya.uz",
     "http://www.suacademya.uz",
+    "http://admin.suacademya.uz",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://suacademya.uz",
     "https://www.suacademya.uz",
+    "https://admin.suacademya.uz",
     "http://suacademya.uz",
     "http://www.suacademya.uz",
+    "http://admin.suacademya.uz",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
