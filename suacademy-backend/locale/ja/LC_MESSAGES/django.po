@@ -1,0 +1,80 @@
+# Japanese translations for SU Academya
+# ------------------------------------
+msgid ""
+msgstr ""
+"Project-Id-Version: SU Academya\n"
+"POT-Creation-Date: 2025-12-19 00:00+0500\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+
+# =========================
+# USERS / AUTH
+# =========================
+
+#: users/serializers.py:14 users/serializers.py:43
+msgid "Username"
+msgstr "ユーザー名"
+
+#: users/serializers.py:15 users/serializers.py:65 users/serializers.py:77
+msgid "Email"
+msgstr "メールアドレス"
+
+#: users/serializers.py:16 users/serializers.py:44
+msgid "Password"
+msgstr "パスワード"
+
+#: users/serializers.py:19
+msgid "Nationality"
+msgstr "国籍"
+
+#: users/serializers.py:53
+msgid "Login yoki parol noto‘g‘ri"
+msgstr "ユーザー名またはパスワードが正しくありません"
+
+#: users/serializers.py:56
+msgid "Email tasdiqlanmagan"
+msgstr "メールアドレスが確認されていません"
+
+#: users/serializers.py:66
+msgid "Verification code"
+msgstr "確認コード"
+
+#: users/serializers.py:73 users/serializers.py:81
+msgid "New password"
+msgstr "新しいパスワード"
+
+
+# =========================
+# COMMON LABELS (OPTIONAL)
+# =========================
+
+msgid "Yes"
+msgstr "はい"
+
+msgid "No"
+msgstr "いいえ"
+
+msgid "Delete"
+msgstr "削除"
+
+msgid "Order"
+msgstr "順序"
+
+msgid "Change"
+msgstr "変更"
+
+msgid "Clear"
+msgstr "クリア"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Search"
+msgstr "検索"
+
+msgid "Add"
+msgstr "追加"

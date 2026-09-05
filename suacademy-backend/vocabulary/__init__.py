@@ -1,0 +1,44 @@
+from django.db import migrations, models
+import django.db.models.deletion
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = []
+
+    operations = [
+        migrations.CreateModel(
+            name="VocabularyTopic",
+            fields=[
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("nationality", models.CharField(choices=[("uz", "Uzbek"), ("ja", "Japanese")], max_length=2)),
+                ("title", models.CharField(max_length=255)),
+                ("slug", models.SlugField(max_length=255)),
+                ("order", models.PositiveIntegerField(default=1)),
+                ("is_active", models.BooleanField(default=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+            ],
+            options={"ordering": ["order", "id"]},
+        ),
+        migrations.CreateModel(
+            name="VocabularyWord",
+            fields=[
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("jp_word", models.CharField(max_length=255)),
+                ("uz_word", models.CharField(max_length=255)),
+                ("audio", models.FileField(blank=True, null=True, upload_to="vocabulary/audio/")),
+                ("order", models.PositiveIntegerField(default=1)),
+                ("is_active", models.BooleanField(default=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("topic", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="words", to="vocabulary.vocabularytopic")),
+            ],
+            options={"ordering": ["order", "id"]},
+        ),
+        migrations.AddConstraint(
+            model_name="vocabularytopic",
+            constraint=models.UniqueConstraint(fields=("nationality", "slug"), name="uniq_topic_slug_per_nationality"),
+        ),
+    ]

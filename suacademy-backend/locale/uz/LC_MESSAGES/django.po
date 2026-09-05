@@ -1,0 +1,81 @@
+# Uzbek translations for SU Academya
+# ----------------------------------
+msgid ""
+msgstr ""
+"Project-Id-Version: SU Academya\n"
+"POT-Creation-Date: 2025-12-19 00:00+0500\n"
+"Language: uz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+
+# =========================
+# USERS / AUTH
+# =========================
+
+#: users/serializers.py:14 users/serializers.py:43
+msgid "Username"
+msgstr "Foydalanuvchi nomi"
+
+#: users/serializers.py:15 users/serializers.py:65 users/serializers.py:77
+msgid "Email"
+msgstr "Elektron pochta"
+
+#: users/serializers.py:16 users/serializers.py:44
+msgid "Password"
+msgstr "Parol"
+
+#: users/serializers.py:19
+msgid "Nationality"
+msgstr "Millati"
+
+#: users/serializers.py:53
+msgid "Login yoki parol noto‘g‘ri"
+msgstr "Foydalanuvchi nomi yoki parol noto‘g‘ri"
+
+#: users/serializers.py:56
+msgid "Email tasdiqlanmagan"
+msgstr "Email tasdiqlanmagan"
+
+#: users/serializers.py:66
+msgid "Verification code"
+msgstr "Tasdiqlash kodi"
+
+#: users/serializers.py:73 users/serializers.py:81
+msgid "New password"
+msgstr "Yangi parol"
+
+
+# =========================
+# COMMON DJANGO LABELS
+# (ixtiyoriy, lekin foydali)
+# =========================
+
+msgid "Yes"
+msgstr "Ha"
+
+msgid "No"
+msgstr "Yo‘q"
+
+msgid "Delete"
+msgstr "O‘chirish"
+
+msgid "Order"
+msgstr "Tartib"
+
+msgid "Change"
+msgstr "O‘zgartirish"
+
+msgid "Clear"
+msgstr "Tozalash"
+
+msgid "Save"
+msgstr "Saqlash"
+
+msgid "Search"
+msgstr "Qidirish"
+
+msgid "Add"
+msgstr "Qo‘shish"
