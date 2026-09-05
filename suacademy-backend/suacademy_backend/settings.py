@@ -18,11 +18,10 @@ SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
 DEBUG = os.getenv("DEBUG", "True") == "True"
 # Render + custom domains (env override recommended)
 DEFAULT_ALLOWED_HOSTS = [
-    "suacademy-backend.onrender.com",
-    "localhost",
-    "127.0.0.1",
     "suacademya.uz",
     "www.suacademya.uz",
+    "localhost",
+    "127.0.0.1",
 ]
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",") if os.getenv("ALLOWED_HOSTS") else DEFAULT_ALLOWED_HOSTS
 
@@ -301,16 +300,17 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://suacademy-frontend.vercel.app",
     "https://suacademya.uz",
     "https://www.suacademya.uz",
+    "http://suacademya.uz",
+    "http://www.suacademya.uz",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://suacademy-frontend.vercel.app",
-    "https://suacademy-backend.onrender.com",
     "https://suacademya.uz",
     "https://www.suacademya.uz",
+    "http://suacademya.uz",
+    "http://www.suacademya.uz",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
