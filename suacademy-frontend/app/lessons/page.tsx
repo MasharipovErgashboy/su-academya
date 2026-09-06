@@ -234,7 +234,7 @@ export default function LessonsPage() {
                 <section className="relative pt-20 pb-20 overflow-hidden">
                     <div className="container mx-auto px-4">
                         <div className="flex flex-col lg:flex-row items-center gap-16">
-                            <ScrollAnimation direction="left" className="flex-1 text-center lg:text-left">
+                            <ScrollAnimation direction="left" className="flex-1 w-full text-center lg:text-left">
                                 <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wider uppercase border-2 ${isUz ? "bg-blue-50 text-blue-600 border-blue-100" : "bg-orange-50 text-orange-600 border-orange-100"}`}>
                                     {t.badge}
                                 </span>
@@ -260,7 +260,7 @@ export default function LessonsPage() {
                                 </div>
                             </ScrollAnimation>
 
-                            <ScrollAnimation direction="right" delay={0.2} className="flex-1 relative">
+                            <ScrollAnimation direction="right" delay={0.2} className="flex-1 w-full relative mt-8 lg:mt-0">
                                 <div className="relative z-10 w-full aspect-video max-w-xl mx-auto flex items-center justify-center">
                                     {/* Main Lesson Video Card */}
                                     <div className="relative z-20 w-[90%] aspect-video bg-slate-900 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden border border-slate-800 group cursor-pointer transform -rotate-1 hover:rotate-0 transition-all duration-700">
@@ -316,7 +316,7 @@ export default function LessonsPage() {
                                     </div>
 
                                     {/* Next Lesson Floating Badge */}
-                                    <div className="absolute -top-6 -left-6 z-30 bg-white rounded-3xl p-4 shadow-2xl border border-slate-100 flex items-center gap-4 animate-bounce-slow">
+                                    <div className="absolute -top-6 -left-6 z-30 bg-white rounded-3xl p-4 shadow-2xl border border-slate-100 hidden md:flex items-center gap-4 animate-bounce-slow">
                                         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-2xl ${isUz ? "bg-blue-50" : "bg-orange-50"}`}>📖</div>
                                         <AnimatePresence mode="wait">
                                             <motion.div
@@ -333,7 +333,7 @@ export default function LessonsPage() {
                                     </div>
 
                                     {/* Quiz Score Floating Badge */}
-                                    <div className="absolute -bottom-4 -right-4 z-30 bg-white/90 backdrop-blur-xl rounded-3xl p-5 shadow-2xl border border-white/50 animate-pulse-slow">
+                                    <div className="absolute -bottom-4 -right-4 z-30 bg-white/90 backdrop-blur-xl rounded-3xl p-5 shadow-2xl border border-white/50 hidden md:block animate-pulse-slow">
                                         <div className="flex items-center gap-4">
                                             <div className="relative w-12 h-12">
                                                 <svg className="w-12 h-12 -rotate-90">
