@@ -152,131 +152,132 @@ function HeaderContent() {
                     </div>
                 </div>
 
-                {/* Mobile Menu Overlay - Premium Slide-in Drawer */}
-                <AnimatePresence>
-                    {isMobileMenuOpen && (
-                        <>
-                            {/* Backdrop */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
-                            />
-
-                            {/* Drawer */}
-                            <motion.div
-                                initial={{ x: "100%" }}
-                                animate={{ x: 0 }}
-                                exit={{ x: "100%" }}
-                                transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                                className="fixed top-0 right-0 bottom-0 z-50 w-[80%] max-w-sm bg-white/95 backdrop-blur-xl shadow-2xl lg:hidden border-l border-white/50 flex flex-col"
-                            >
-                                {/* Drawer Header */}
-                                <div className="p-6 flex items-center justify-between border-b border-slate-100">
-                                    <div className="flex items-center gap-2">
-                                        {isUz ? (
-                                            <div className="flex items-center text-xl font-black tracking-tighter">
-                                                <span className="text-blue-600">SU</span>
-                                                <span className="text-slate-900 ml-1">Academy</span>
-                                            </div>
-                                        ) : (
-                                            <div className="flex items-center text-xl font-black tracking-tighter">
-                                                <span className="text-white bg-[#FE9B19] px-2 rounded-md mr-1">SU</span>
-                                                <span className="text-slate-900">Academy</span>
-                                            </div>
-                                        )}
-                                    </div>
-                                    <button
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="p-2 rounded-full hover:bg-slate-100 transition-colors"
-                                    >
-                                        <svg className="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-                                    </button>
-                                </div>
-
-                                {/* Drawer Body */}
-                                <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-2">
-                                    {navItems.map((item, idx) => {
-                                        const isActive = pathname.startsWith(item.href);
-                                        return (
-                                            <motion.div
-                                                key={item.href}
-                                                initial={{ opacity: 0, x: 20 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: idx * 0.05 }}
-                                            >
-                                                <Link
-                                                    href={item.href}
-                                                    onClick={() => setIsMobileMenuOpen(false)}
-                                                    className={`block text-lg font-bold py-3 px-4 rounded-xl transition-all ${isActive
-                                                        ? (isUz ? "bg-blue-50 text-blue-600" : "bg-orange-50 text-[#FE9B19]")
-                                                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                                                        }`}
-                                                >
-                                                    {item.label}
-                                                </Link>
-                                            </motion.div>
-                                        );
-                                    })}
-
-                                    <div className="h-px bg-slate-100 my-4"></div>
-
-                                    {/* Mobile Actions */}
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.3 }}
-                                        className="space-y-3"
-                                    >
-                                        <Link
-                                            href="/subscription"
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                            className={`w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 text-white shadow-lg shadow-blue-200 transition-transform active:scale-95 ${isUz ? "bg-blue-600" : "bg-[#FE9B19]"}`}
-                                        >
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
-                                            <span>{isUz ? "Premium Obuna" : "プレミアム"}</span>
-                                        </Link>
-
-                                        {user ? (
-                                            <Link
-                                                href="/profile"
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                                className="w-full py-3.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-700 flex items-center justify-center gap-3 hover:bg-slate-100 transition-colors"
-                                            >
-                                                <div className="w-6 h-6 rounded-full overflow-hidden border border-slate-300">
-                                                    <img
-                                                        src={user.image ? `${API_BASE_URL.replace('/auth', '')}${user.image}` : `https://ui-avatars.com/api/?name=${user.username}&background=0D8ABC&color=fff`}
-                                                        alt={user.username}
-                                                        className="w-full h-full object-cover"
-                                                    />
-                                                </div>
-                                                {user.username}
-                                            </Link>
-                                        ) : (
-                                            <Link
-                                                href="/login"
-                                                onClick={() => setIsMobileMenuOpen(false)}
-                                                className="w-full py-3.5 rounded-xl bg-slate-900 text-white font-bold text-center shadow-lg shadow-slate-200"
-                                            >
-                                                {isUz ? "Kirish" : "ログイン"}
-                                            </Link>
-                                        )}
-                                    </motion.div>
-                                </div>
-
-                                {/* Drawer Footer */}
-                                <div className="p-6 border-t border-slate-100/50">
-                                    <div className="text-center text-xs text-slate-400 font-medium">
-                                        © 2024 SU Academy
-                                    </div>
-                                </div>
-                            </motion.div>
-                        </>
-                    )}
-                </AnimatePresence>
             </header>
+
+            {/* Mobile Menu Overlay - Premium Slide-in Drawer */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm lg:hidden"
+                        />
+
+                        {/* Drawer */}
+                        <motion.div
+                            initial={{ x: "100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "100%" }}
+                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                            className="fixed top-0 right-0 bottom-0 z-[60] w-[80%] max-w-sm bg-white shadow-2xl lg:hidden border-l border-slate-100 flex flex-col"
+                        >
+                            {/* Drawer Header */}
+                            <div className="p-6 flex items-center justify-between border-b border-slate-100">
+                                <div className="flex items-center gap-2">
+                                    {isUz ? (
+                                        <div className="flex items-center text-xl font-black tracking-tighter">
+                                            <span className="text-blue-600">SU</span>
+                                            <span className="text-slate-900 ml-1">Academy</span>
+                                        </div>
+                                    ) : (
+                                        <div className="flex items-center text-xl font-black tracking-tighter">
+                                            <span className="text-white bg-[#FE9B19] px-2 rounded-md mr-1">SU</span>
+                                            <span className="text-slate-900">Academy</span>
+                                        </div>
+                                    )}
+                                </div>
+                                <button
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="p-2 rounded-full hover:bg-slate-100 transition-colors"
+                                >
+                                    <svg className="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                                </button>
+                            </div>
+
+                            {/* Drawer Body */}
+                            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-2">
+                                {navItems.map((item, idx) => {
+                                    const isActive = pathname.startsWith(item.href);
+                                    return (
+                                        <motion.div
+                                            key={item.href}
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: idx * 0.05 }}
+                                        >
+                                            <Link
+                                                href={item.href}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className={`block text-lg font-bold py-3 px-4 rounded-xl transition-all ${isActive
+                                                    ? (isUz ? "bg-blue-50 text-blue-600" : "bg-orange-50 text-[#FE9B19]")
+                                                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                                                    }`}
+                                            >
+                                                {item.label}
+                                            </Link>
+                                        </motion.div>
+                                    );
+                                })}
+
+                                <div className="h-px bg-slate-100 my-4"></div>
+
+                                {/* Mobile Actions */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.3 }}
+                                    className="space-y-3"
+                                >
+                                    <Link
+                                        href="/subscription"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className={`w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 text-white shadow-lg shadow-blue-200 transition-transform active:scale-95 ${isUz ? "bg-blue-600" : "bg-[#FE9B19]"}`}
+                                    >
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                                        <span>{isUz ? "Premium Obuna" : "プレミアム"}</span>
+                                    </Link>
+
+                                    {user ? (
+                                        <Link
+                                            href="/profile"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="w-full py-3.5 rounded-xl bg-slate-50 border border-slate-200 font-bold text-slate-700 flex items-center justify-center gap-3 hover:bg-slate-100 transition-colors"
+                                        >
+                                            <div className="w-6 h-6 rounded-full overflow-hidden border border-slate-300">
+                                                <img
+                                                    src={user.image ? `${API_BASE_URL.replace('/auth', '')}${user.image}` : `https://ui-avatars.com/api/?name=${user.username}&background=0D8ABC&color=fff`}
+                                                    alt={user.username}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                            {user.username}
+                                        </Link>
+                                    ) : (
+                                        <Link
+                                            href="/login"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="w-full py-3.5 rounded-xl bg-slate-900 text-white font-bold text-center shadow-lg shadow-slate-200"
+                                        >
+                                            {isUz ? "Kirish" : "ログイン"}
+                                        </Link>
+                                    )}
+                                </motion.div>
+                            </div>
+
+                            {/* Drawer Footer */}
+                            <div className="p-6 border-t border-slate-100/50">
+                                <div className="text-center text-xs text-slate-400 font-medium">
+                                    © 2024 SU Academy
+                                </div>
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
 
             {/* Feedback Modal Integration */}
             <FeedbackModal isOpen={isFeedbackOpen} onClose={() => setIsFeedbackOpen(false)} nationality={nationality} />
