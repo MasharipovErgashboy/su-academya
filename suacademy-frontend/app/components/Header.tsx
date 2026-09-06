@@ -260,7 +260,7 @@ function HeaderContent() {
                                         <Link
                                             href="/login"
                                             onClick={() => setIsMobileMenuOpen(false)}
-                                            className="w-full py-3.5 rounded-xl bg-slate-900 text-white font-bold text-center shadow-lg shadow-slate-200"
+                                            className="block w-full py-3.5 rounded-xl bg-slate-900 text-white font-bold text-center shadow-lg shadow-slate-200"
                                         >
                                             {isUz ? "Kirish" : "ログイン"}
                                         </Link>
