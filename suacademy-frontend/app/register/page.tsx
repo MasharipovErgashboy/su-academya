@@ -100,7 +100,21 @@ export default function RegisterPage() {
             }
 
             if (!response.ok) {
-                let errorMessage = data.error || data.detail || (isUz ? "Ro'yxatdan o'tishda xatolik yuz berdi" : "登録中にエラーが発生しました");
+                let errorMessage = data.error || data.detail;
+                if (!errorMessage && typeof data === 'object') {
+                    const errors = [];
+                    for (const key in data) {
+                        if (Array.isArray(data[key])) {
+                            errors.push(`${data[key][0]}`);
+                        } else if (typeof data[key] === 'string') {
+                            errors.push(data[key]);
+                        }
+                    }
+                    if (errors.length > 0) {
+                        errorMessage = errors.join(' | ');
+                    }
+                }
+                errorMessage = errorMessage || (isUz ? "Ro'yxatdan o'tishda xatolik yuz berdi" : "登録中にエラーが発生しました");
                 throw new Error(errorMessage);
             }
 
