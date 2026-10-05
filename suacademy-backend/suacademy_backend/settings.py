@@ -350,3 +350,4 @@ LOGGING = {
     },
 }
 
+FORCE_SCRIPT_NAME = '/api'
